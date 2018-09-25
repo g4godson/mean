@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<button class="btn btn-danger shadow rounded " (click) = "deleteMovie()">Delete Movie</button>
+
+<div class = "wrapper">
+        <h3>Reviews For {{movie}}</h3>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+
+                <th scope="col">Reviewer </th>
+                <th scope="col">Stars</th>
+                <th scope="col">Reviews</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor = "let review of allReviews">
+
+                <td>{{review.name}}</td>
+                <td>{{review.stars}}</td>
+                <td>{{review.review}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+</div>

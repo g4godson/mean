@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<div class= "wrapperCreation">
+        <h2>Submit a movie and your review</h2>
+
+        <div class="col-md-3 bg-light shadow rounded w-1 p-3 division" >
+            <form (submit)="addMovie()">
+                <div class="form-group">
+                    Movie Title <br>
+                    <span *ngIf="errors.title" class="text-danger">{{errors.title.message}}</span>
+                    <input type="text" class="form-control" name="title" [(ngModel)]="newMovie.title" #title = "ngModel" required minlength=3 maxlength=20/>
+
+                    <span *ngIf = "!title.valid && title.errors.required" class = "text-danger">Title is Required</span>
+                    <span *ngIf = "!title.valid && title.errors.minlength" class = "text-danger">Title should be atleast 3 characters</span>
+
+                </div>
+                <div class = "form-group ">
+
+                   Your Name <br>
+                    <span *ngIf="errors.name" class="text-danger">{{errors.name.message}}</span>
+                    <input type="text" class="form-control" name="name" [(ngModel)]="newMovie.name" #name = "ngModel" ngModel required minlength=3 maxlength=20  />
+                    <span *ngIf = "!name.valid && name.errors.required" class = "text-danger">Name is Required</span>
+                    <span *ngIf = "!name.valid && name.errors.minlength" class = "text-danger">Name should be atleast 3 characters</span>
+                </div>
+
+                <div class="col-auto my-1">
+                        <label for = "custom-select">Stars</label>
+                        <br>
+                        <span *ngIf="errors.stars" class="text-danger">{{errors.stars.message}}</span>
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name = "stars" [(ngModel)]="newMovie.stars" #stars = "ngModel" required>
+                        <option selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        </select>
+                        <span *ngIf = "!stars.valid && stars.untouched || stars.invalid" class = "text-danger">Please rate</span>
+
+                </div>
+
+                <div class = "form-group">
+
+                    Your Review
+                    <br>
+                    <span *ngIf="errors.review" class="text-danger">{{errors.review.message}}</span>
+                    <textarea class = "form-control" name="review" id="review" cols="40" rows="5" [(ngModel)]="newMovie.review" required minlength=3 maxlength=20 #review = "ngModel"></textarea>
+                    <span *ngIf = "!review.valid && review.errors.required" class = "text-danger">Review is Required</span>
+                    <span *ngIf = "!review.valid && review.errors.minlength" class = "text-danger">Review should be atleast 3 characters</span>
+
+                </div>
+
+
+            <button type="button" class="btn btn-warning shadow rounded mr-2" [routerLink]="['/']">Cancel</button>
+            <button  [disabled] = "!title.valid || !name.valid || !stars.valid || !review.valid" type="submit" class="btn btn-primary shadow rounded">Submit</button>
+            </form>
+
+        </div>
+
+</div>

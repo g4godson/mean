@@ -1,0 +1,17 @@
+.wrapperHome{
+    text-align: center;
+    width:60%;
+    margin-left: 20%;
+}
+.addnewmovie{
+    margin-left: 20%;
+    display: inline-block;
+
+}
+#movielist{
+    display: inline-block;
+}
+
+.writereviewbutton{
+    margin-left: 1%;
+}
